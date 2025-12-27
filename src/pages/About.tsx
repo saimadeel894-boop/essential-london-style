@@ -1,4 +1,8 @@
 import heroImage from '@/assets/hero-image.jpg';
+import youngmenCollection from '@/assets/youngmen-collection.jpg';
+import womenCollection from '@/assets/women-collection.jpg';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const About = () => {
   return (
@@ -14,6 +18,9 @@ const About = () => {
           <div className="absolute inset-0 bg-foreground/40" />
         </div>
         <div className="relative z-10 text-center px-4">
+          <span className="inline-block text-xs tracking-[0.3em] uppercase mb-4 text-background/80">
+            Est. 2024
+          </span>
           <h1 className="text-display text-4xl md:text-6xl font-light text-background">
             Our Story
           </h1>
@@ -27,7 +34,7 @@ const About = () => {
           <h2 className="text-display text-3xl md:text-4xl font-light mt-4 mb-8">
             Redefining Essential Wardrobe Pieces
           </h2>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-lg">
             Essential London was born from a simple belief: that everyday clothing should be anything but ordinary. 
             We create premium streetwear essentials that blend timeless design with exceptional quality, 
             crafted for those who appreciate the beauty in simplicity.
@@ -35,7 +42,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values */}
+      {/* Values Grid */}
       <section className="bg-secondary py-20 lg:py-28">
         <div className="container-luxury">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -54,7 +61,13 @@ const About = () => {
                 from the weight of our fabrics to the precision of our stitching.
               </p>
             </div>
-            <div className="aspect-square bg-accent" />
+            <div className="aspect-square overflow-hidden">
+              <img 
+                src={youngmenCollection} 
+                alt="Quality craftsmanship" 
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -62,7 +75,13 @@ const About = () => {
       {/* Sustainability */}
       <section className="container-luxury py-20 lg:py-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1 aspect-square bg-muted" />
+          <div className="order-2 md:order-1 aspect-square overflow-hidden">
+            <img 
+              src={womenCollection} 
+              alt="Sustainable fashion" 
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="order-1 md:order-2">
             <span className="text-xs tracking-widest uppercase text-muted-foreground">Responsibility</span>
             <h3 className="text-display text-2xl md:text-3xl font-light mt-4 mb-6">
@@ -81,6 +100,30 @@ const About = () => {
         </div>
       </section>
 
+      {/* Stats */}
+      <section className="bg-secondary py-16">
+        <div className="container-luxury">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-display text-3xl md:text-4xl font-light mb-2">100%</p>
+              <p className="text-sm text-muted-foreground">Premium Materials</p>
+            </div>
+            <div>
+              <p className="text-display text-3xl md:text-4xl font-light mb-2">50+</p>
+              <p className="text-sm text-muted-foreground">Countries Shipped</p>
+            </div>
+            <div>
+              <p className="text-display text-3xl md:text-4xl font-light mb-2">30</p>
+              <p className="text-sm text-muted-foreground">Day Returns</p>
+            </div>
+            <div>
+              <p className="text-display text-3xl md:text-4xl font-light mb-2">24/7</p>
+              <p className="text-sm text-muted-foreground">Customer Support</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* London Heritage */}
       <section className="bg-primary text-primary-foreground py-20 lg:py-28">
         <div className="container-luxury text-center">
@@ -88,11 +131,14 @@ const About = () => {
           <h3 className="text-display text-2xl md:text-3xl font-light mt-4 mb-6">
             Born in London
           </h3>
-          <p className="text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto mb-8">
             Rooted in London's rich culture of creativity and innovation, Essential London draws inspiration 
             from the city's unique blend of tradition and contemporary edge. Our designs reflect this duality—
             timeless silhouettes with modern sensibilities, created for the global citizen who calls anywhere home.
           </p>
+          <Link to="/shop" className="btn-luxury bg-primary-foreground text-primary hover:bg-primary-foreground/90 inline-flex items-center gap-2">
+            Explore Collection <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </div>

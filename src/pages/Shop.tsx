@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { products, Product } from '@/lib/products';
+import { products } from '@/lib/products';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { ChevronDown } from 'lucide-react';
 
@@ -14,8 +14,8 @@ const categories = [
 const collections = [
   { value: 'all', label: 'All Collections' },
   { value: 'kids', label: 'Kids' },
-  { value: 'mens', label: 'Mens' },
-  { value: 'womens', label: 'Womens' },
+  { value: 'youngmen', label: 'Young Men' },
+  { value: 'women', label: 'Women' },
 ];
 
 const sortOptions = [
@@ -85,6 +85,27 @@ const Shop = () => {
         </div>
       </div>
 
+      {/* Category Pills */}
+      <div className="border-b border-border">
+        <div className="container-luxury py-6">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map(cat => (
+              <button
+                key={cat.value}
+                onClick={() => setSelectedCategory(cat.value)}
+                className={`px-6 py-2 text-sm tracking-wide transition-colors ${
+                  selectedCategory === cat.value
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-secondary text-secondary-foreground hover:bg-accent'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Filters Bar */}
       <div className="sticky top-16 lg:top-20 z-40 bg-background border-b border-border">
         <div className="container-luxury py-4">
@@ -99,16 +120,6 @@ const Shop = () => {
 
             {/* Desktop filters */}
             <div className="hidden lg:flex items-center gap-6">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="bg-transparent text-sm focus:outline-none cursor-pointer"
-              >
-                {categories.map(cat => (
-                  <option key={cat.value} value={cat.value}>{cat.label}</option>
-                ))}
-              </select>
-
               <select
                 value={selectedCollection}
                 onChange={(e) => setSelectedCollection(e.target.value)}
@@ -135,16 +146,6 @@ const Shop = () => {
           {/* Mobile filters dropdown */}
           <div className={`lg:hidden overflow-hidden transition-all duration-300 ${showFilters ? 'max-h-40 pt-4' : 'max-h-0'}`}>
             <div className="flex flex-col gap-4">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="bg-transparent text-sm focus:outline-none border border-border p-2"
-              >
-                {categories.map(cat => (
-                  <option key={cat.value} value={cat.value}>{cat.label}</option>
-                ))}
-              </select>
-
               <select
                 value={selectedCollection}
                 onChange={(e) => setSelectedCollection(e.target.value)}
