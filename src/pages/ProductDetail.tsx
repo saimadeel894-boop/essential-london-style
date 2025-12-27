@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProductById, ProductColor, getFeaturedProducts } from '@/lib/products';
 import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 import { ProductGrid } from '@/components/product/ProductGrid';
-import { ChevronLeft, Minus, Plus, Check } from 'lucide-react';
+import { ChevronLeft, Minus, Plus, Check, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
@@ -13,7 +14,10 @@ const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const product = getProductById(id || '');
   const { addItem } = useCart();
+  const { isInWishlist, toggleItem } = useWishlist();
   const { toast } = useToast();
+  
+  const inWishlist = product ? isInWishlist(product.id) : false;
   
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
     product?.colors[0] || null
@@ -231,13 +235,33 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* Add to Cart */}
-            <button
-              onClick={handleAddToCart}
-              className="btn-luxury-primary w-full"
-            >
-              Add to Bag - £{product.price * quantity}
-            </button>
+            {/* Add to Cart & Wishlist */}
+            <div className="flex gap-3">
+              <button
+                onClick={handleAddToCart}
+                className="btn-luxury-primary flex-1"
+              >
+                Add to Bag - £{(product.price * quantity).toFixed(2)}
+              </button>
+              <button
+                onClick={() => {
+                  toggleItem(product.id);
+                  toast({
+                    title: inWishlist ? "Removed from wishlist" : "Added to wishlist",
+                    description: product.name,
+                  });
+                }}
+                className={cn(
+                  "p-4 border transition-all",
+                  inWishlist 
+                    ? "bg-primary text-primary-foreground border-primary" 
+                    : "border-border hover:border-foreground"
+                )}
+                aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
+              >
+                <Heart className={cn("h-5 w-5", inWishlist && "fill-current")} />
+              </button>
+            </div>
 
             {/* Additional Info */}
             <div className="space-y-4 pt-4 border-t border-border">
