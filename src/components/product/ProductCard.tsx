@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Heart } from 'lucide-react';
 import { Product } from '@/lib/products';
+import { useWishlist } from '@/contexts/WishlistContext';
 import { cn } from '@/lib/utils';
 
 interface ProductCardProps {
@@ -13,10 +15,18 @@ const FALLBACK_IMAGE = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/
 export const ProductCard = ({ product, className }: ProductCardProps) => {
   const [imageError, setImageError] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { isInWishlist, toggleItem } = useWishlist();
   
+  const inWishlist = isInWishlist(product.id);
   const mainImage = product.colors[0]?.image || product.images[0];
   const hoverImage = product.colors[1]?.image || product.images[1] || mainImage;
   const currentImage = isHovered && hoverImage ? hoverImage : mainImage;
+
+  const handleWishlistClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleItem(product.id);
+  };
 
   return (
     <Link 
@@ -34,6 +44,22 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
           loading="lazy"
           onError={() => setImageError(true)}
         />
+        
+        {/* Wishlist Button */}
+        <button
+          onClick={handleWishlistClick}
+          className={cn(
+            "absolute top-4 right-4 z-20 p-2 rounded-full transition-all duration-200",
+            inWishlist 
+              ? "bg-primary text-primary-foreground" 
+              : "bg-background/80 hover:bg-background text-foreground"
+          )}
+          aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
+        >
+          <Heart 
+            className={cn("h-4 w-4 transition-transform", inWishlist && "fill-current")} 
+          />
+        </button>
         
         {/* Badges */}
         <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
