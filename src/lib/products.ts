@@ -1,3 +1,15 @@
+// Product images imports
+import kidsHoodieCream from '@/assets/products/kids-hoodie-cream.jpg';
+import kidsHoodieBlack from '@/assets/products/kids-hoodie-black.jpg';
+import kidsSweatshirtCream from '@/assets/products/kids-sweatshirt-cream.jpg';
+import kidsSweatshirtBlack from '@/assets/products/kids-sweatshirt-black.jpg';
+import kidsTracksuitBlack from '@/assets/products/kids-tracksuit-black.jpg';
+import kidsTracksuitCream from '@/assets/products/kids-tracksuit-cream.jpg';
+import kidsZipHoodieGrey from '@/assets/products/kids-zip-hoodie-grey.jpg';
+import mensHoodieBlack from '@/assets/products/mens-hoodie-black.jpg';
+import mensTracksuitGrey from '@/assets/products/mens-tracksuit-grey.jpg';
+import womensHoodieCream from '@/assets/products/womens-hoodie-cream.jpg';
+
 export interface Product {
   id: string;
   name: string;
@@ -16,6 +28,7 @@ export interface Product {
 export interface ProductColor {
   name: string;
   hex: string;
+  image?: string;
 }
 
 export const products: Product[] = [
@@ -27,12 +40,12 @@ export const products: Product[] = [
     category: 'hoodie',
     collection: 'kids',
     colors: [
-      { name: 'Cream', hex: '#F5F0E8' },
-      { name: 'Charcoal', hex: '#3A3A3A' },
-      { name: 'Sage', hex: '#9CAF88' },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsHoodieCream },
+      { name: 'Charcoal', hex: '#3A3A3A', image: kidsHoodieBlack },
+      { name: 'Sage', hex: '#9CAF88', image: kidsHoodieCream },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsHoodieCream, kidsHoodieBlack],
     description: 'Premium cotton blend hoodie with signature Essential London branding. Relaxed fit for ultimate comfort.',
     isNew: true,
   },
@@ -43,12 +56,12 @@ export const products: Product[] = [
     category: 'hoodie',
     collection: 'kids',
     colors: [
-      { name: 'Black', hex: '#1A1A1A' },
-      { name: 'Oatmeal', hex: '#E8DFD0' },
-      { name: 'Mocha', hex: '#8B7355' },
+      { name: 'Black', hex: '#1A1A1A', image: kidsHoodieBlack },
+      { name: 'Oatmeal', hex: '#E8DFD0', image: kidsHoodieCream },
+      { name: 'Mocha', hex: '#8B7355', image: kidsHoodieCream },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsHoodieBlack, kidsHoodieCream],
     description: 'Oversized silhouette with dropped shoulders and premium heavyweight cotton.',
     isBestseller: true,
   },
@@ -59,12 +72,12 @@ export const products: Product[] = [
     category: 'hoodie',
     collection: 'kids',
     colors: [
-      { name: 'Grey Heather', hex: '#A8A8A8' },
-      { name: 'Navy', hex: '#1E2A3A' },
-      { name: 'Cream', hex: '#F5F0E8' },
+      { name: 'Grey Heather', hex: '#A8A8A8', image: kidsZipHoodieGrey },
+      { name: 'Navy', hex: '#1E2A3A', image: kidsHoodieBlack },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsHoodieCream },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsZipHoodieGrey, kidsHoodieBlack, kidsHoodieCream],
     description: 'Classic full-zip hoodie with metal hardware and ribbed cuffs.',
   },
   // Kids Collection - Sweatshirts
@@ -75,12 +88,12 @@ export const products: Product[] = [
     category: 'sweatshirt',
     collection: 'kids',
     colors: [
-      { name: 'Cream', hex: '#F5F0E8' },
-      { name: 'Black', hex: '#1A1A1A' },
-      { name: 'Taupe', hex: '#B8A898' },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsSweatshirtCream },
+      { name: 'Black', hex: '#1A1A1A', image: kidsSweatshirtBlack },
+      { name: 'Taupe', hex: '#B8A898', image: kidsSweatshirtCream },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsSweatshirtCream, kidsSweatshirtBlack],
     description: 'Minimalist crewneck sweatshirt with subtle chest logo.',
     isNew: true,
   },
@@ -91,12 +104,12 @@ export const products: Product[] = [
     category: 'sweatshirt',
     collection: 'kids',
     colors: [
-      { name: 'Dusty Rose', hex: '#D4A5A5' },
-      { name: 'Sage', hex: '#9CAF88' },
-      { name: 'Cream', hex: '#F5F0E8' },
+      { name: 'Dusty Rose', hex: '#D4A5A5', image: kidsSweatshirtCream },
+      { name: 'Sage', hex: '#9CAF88', image: kidsSweatshirtCream },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsSweatshirtCream },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsSweatshirtCream],
     description: 'Soft brushed fleece interior with relaxed contemporary fit.',
   },
   // Kids Collection - Tracksuits
@@ -108,12 +121,12 @@ export const products: Product[] = [
     category: 'tracksuit',
     collection: 'kids',
     colors: [
-      { name: 'Black', hex: '#1A1A1A' },
-      { name: 'Grey', hex: '#6B6B6B' },
-      { name: 'Cream', hex: '#F5F0E8' },
+      { name: 'Black', hex: '#1A1A1A', image: kidsTracksuitBlack },
+      { name: 'Grey', hex: '#6B6B6B', image: kidsTracksuitBlack },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsTracksuitCream },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsTracksuitBlack, kidsTracksuitCream],
     description: 'Complete tracksuit set including hoodie and matching joggers.',
     isBestseller: true,
   },
@@ -124,12 +137,12 @@ export const products: Product[] = [
     category: 'tracksuit',
     collection: 'kids',
     colors: [
-      { name: 'Navy', hex: '#1E2A3A' },
-      { name: 'Olive', hex: '#5C5C3D' },
-      { name: 'Charcoal', hex: '#3A3A3A' },
+      { name: 'Navy', hex: '#1E2A3A', image: kidsTracksuitBlack },
+      { name: 'Olive', hex: '#5C5C3D', image: kidsTracksuitBlack },
+      { name: 'Charcoal', hex: '#3A3A3A', image: kidsTracksuitBlack },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsTracksuitBlack],
     description: 'Elevated tracksuit with premium fabric and refined details.',
     isNew: true,
   },
@@ -140,11 +153,11 @@ export const products: Product[] = [
     category: 'tracksuit',
     collection: 'kids',
     colors: [
-      { name: 'Oatmeal', hex: '#E8DFD0' },
-      { name: 'Black', hex: '#1A1A1A' },
+      { name: 'Oatmeal', hex: '#E8DFD0', image: kidsTracksuitCream },
+      { name: 'Black', hex: '#1A1A1A', image: kidsTracksuitBlack },
     ],
     sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
-    images: ['/placeholder.svg'],
+    images: [kidsTracksuitCream, kidsTracksuitBlack],
     description: 'Comfortable jogger-style tracksuit perfect for everyday wear.',
   },
   // Mens Collection
@@ -155,13 +168,13 @@ export const products: Product[] = [
     category: 'hoodie',
     collection: 'mens',
     colors: [
-      { name: 'Black', hex: '#1A1A1A' },
-      { name: 'Cream', hex: '#F5F0E8' },
-      { name: 'Charcoal', hex: '#3A3A3A' },
-      { name: 'Sage', hex: '#9CAF88' },
+      { name: 'Black', hex: '#1A1A1A', image: mensHoodieBlack },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsHoodieCream },
+      { name: 'Charcoal', hex: '#3A3A3A', image: mensHoodieBlack },
+      { name: 'Sage', hex: '#9CAF88', image: kidsHoodieCream },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    images: ['/placeholder.svg'],
+    images: [mensHoodieBlack, kidsHoodieCream],
     description: 'Signature Essential London hoodie with premium heavyweight cotton.',
     isBestseller: true,
   },
@@ -172,11 +185,11 @@ export const products: Product[] = [
     category: 'tracksuit',
     collection: 'mens',
     colors: [
-      { name: 'Black', hex: '#1A1A1A' },
-      { name: 'Grey', hex: '#6B6B6B' },
+      { name: 'Black', hex: '#1A1A1A', image: kidsTracksuitBlack },
+      { name: 'Grey', hex: '#6B6B6B', image: mensTracksuitGrey },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    images: ['/placeholder.svg'],
+    images: [mensTracksuitGrey, kidsTracksuitBlack],
     description: 'Complete tracksuit set with matching hoodie and joggers.',
   },
   // Womens Collection
@@ -187,12 +200,12 @@ export const products: Product[] = [
     category: 'hoodie',
     collection: 'womens',
     colors: [
-      { name: 'Blush', hex: '#E8D5D5' },
-      { name: 'Cream', hex: '#F5F0E8' },
-      { name: 'Black', hex: '#1A1A1A' },
+      { name: 'Blush', hex: '#E8D5D5', image: womensHoodieCream },
+      { name: 'Cream', hex: '#F5F0E8', image: womensHoodieCream },
+      { name: 'Black', hex: '#1A1A1A', image: kidsHoodieBlack },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: ['/placeholder.svg'],
+    images: [womensHoodieCream, kidsHoodieBlack],
     description: 'Feminine fit Essential hoodie with soft brushed interior.',
     isNew: true,
   },
@@ -203,11 +216,11 @@ export const products: Product[] = [
     category: 'hoodie',
     collection: 'womens',
     colors: [
-      { name: 'Cream', hex: '#F5F0E8' },
-      { name: 'Sage', hex: '#9CAF88' },
+      { name: 'Cream', hex: '#F5F0E8', image: womensHoodieCream },
+      { name: 'Sage', hex: '#9CAF88', image: womensHoodieCream },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: ['/placeholder.svg'],
+    images: [womensHoodieCream],
     description: 'Cropped silhouette with relaxed fit and dropped shoulders.',
   },
 ];
