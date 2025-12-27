@@ -9,6 +9,12 @@ import kidsZipHoodieGrey from '@/assets/products/kids-zip-hoodie-grey.jpg';
 import mensHoodieBlack from '@/assets/products/mens-hoodie-black.jpg';
 import mensTracksuitGrey from '@/assets/products/mens-tracksuit-grey.jpg';
 import womensHoodieCream from '@/assets/products/womens-hoodie-cream.jpg';
+import youngmenHoodieSage from '@/assets/products/youngmen-hoodie-sage.jpg';
+import youngmenSweatshirtNavy from '@/assets/products/youngmen-sweatshirt-navy.jpg';
+import youngmenTracksuitCharcoal from '@/assets/products/youngmen-tracksuit-charcoal.jpg';
+import womensHoodieBlush from '@/assets/products/womens-hoodie-blush.jpg';
+import womensSweatshirtTaupe from '@/assets/products/womens-sweatshirt-taupe.jpg';
+import womensTracksuitCream from '@/assets/products/womens-tracksuit-cream.jpg';
 
 export interface Product {
   id: string;
@@ -16,7 +22,7 @@ export interface Product {
   price: number;
   originalPrice?: number;
   category: 'hoodie' | 'sweatshirt' | 'tracksuit' | 't-shirt' | 'pants';
-  collection: 'kids' | 'mens' | 'womens';
+  collection: 'kids' | 'youngmen' | 'women';
   colors: ProductColor[];
   sizes: string[];
   images: string[];
@@ -160,68 +166,228 @@ export const products: Product[] = [
     images: [kidsTracksuitCream, kidsTracksuitBlack],
     description: 'Comfortable jogger-style tracksuit perfect for everyday wear.',
   },
-  // Mens Collection
+
+  // Young Men Collection - Hoodies
   {
-    id: 'mens-essential-hoodie',
+    id: 'youngmen-essential-hoodie',
     name: 'Essential Hoodie',
     price: 125,
     category: 'hoodie',
-    collection: 'mens',
+    collection: 'youngmen',
     colors: [
       { name: 'Black', hex: '#1A1A1A', image: mensHoodieBlack },
       { name: 'Cream', hex: '#F5F0E8', image: kidsHoodieCream },
-      { name: 'Charcoal', hex: '#3A3A3A', image: mensHoodieBlack },
-      { name: 'Sage', hex: '#9CAF88', image: kidsHoodieCream },
+      { name: 'Sage', hex: '#9CAF88', image: youngmenHoodieSage },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    images: [mensHoodieBlack, kidsHoodieCream],
-    description: 'Signature Essential London hoodie with premium heavyweight cotton.',
+    images: [mensHoodieBlack, kidsHoodieCream, youngmenHoodieSage],
+    description: 'Signature Essential London hoodie with premium heavyweight cotton. Oversized streetwear fit.',
     isBestseller: true,
   },
   {
-    id: 'mens-tracksuit',
+    id: 'youngmen-oversized-hoodie',
+    name: 'Oversized Street Hoodie',
+    price: 135,
+    category: 'hoodie',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Sage', hex: '#9CAF88', image: youngmenHoodieSage },
+      { name: 'Black', hex: '#1A1A1A', image: mensHoodieBlack },
+      { name: 'Charcoal', hex: '#3A3A3A', image: mensHoodieBlack },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [youngmenHoodieSage, mensHoodieBlack],
+    description: 'Oversized silhouette with dropped shoulders. Premium heavyweight French terry.',
+    isNew: true,
+  },
+  {
+    id: 'youngmen-zip-hoodie',
+    name: 'Full Zip Street Hoodie',
+    price: 145,
+    category: 'hoodie',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Charcoal', hex: '#3A3A3A', image: youngmenTracksuitCharcoal },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsHoodieCream },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [youngmenTracksuitCharcoal, kidsHoodieCream],
+    description: 'Full zip hoodie with premium metal hardware. Contemporary streetwear design.',
+  },
+  // Young Men Collection - Sweatshirts
+  {
+    id: 'youngmen-crewneck',
+    name: 'Essential Crewneck',
+    price: 95,
+    category: 'sweatshirt',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Navy', hex: '#1E2A3A', image: youngmenSweatshirtNavy },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsSweatshirtCream },
+      { name: 'Black', hex: '#1A1A1A', image: kidsSweatshirtBlack },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [youngmenSweatshirtNavy, kidsSweatshirtCream, kidsSweatshirtBlack],
+    description: 'Minimalist crewneck sweatshirt with subtle chest logo. Relaxed streetwear fit.',
+    isNew: true,
+  },
+  {
+    id: 'youngmen-relaxed-sweat',
+    name: 'Relaxed Fit Sweatshirt',
+    price: 105,
+    category: 'sweatshirt',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Navy', hex: '#1E2A3A', image: youngmenSweatshirtNavy },
+      { name: 'Sage', hex: '#9CAF88', image: youngmenHoodieSage },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [youngmenSweatshirtNavy, youngmenHoodieSage],
+    description: 'Soft brushed fleece interior with relaxed contemporary fit.',
+  },
+  // Young Men Collection - Tracksuits
+  {
+    id: 'youngmen-tracksuit',
     name: 'Essential Tracksuit',
     price: 195,
     category: 'tracksuit',
-    collection: 'mens',
+    collection: 'youngmen',
     colors: [
-      { name: 'Black', hex: '#1A1A1A', image: kidsTracksuitBlack },
+      { name: 'Charcoal', hex: '#3A3A3A', image: youngmenTracksuitCharcoal },
       { name: 'Grey', hex: '#6B6B6B', image: mensTracksuitGrey },
+      { name: 'Black', hex: '#1A1A1A', image: kidsTracksuitBlack },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    images: [mensTracksuitGrey, kidsTracksuitBlack],
-    description: 'Complete tracksuit set with matching hoodie and joggers.',
+    images: [youngmenTracksuitCharcoal, mensTracksuitGrey, kidsTracksuitBlack],
+    description: 'Complete tracksuit set with matching hoodie and joggers. Streetwear essential.',
+    isBestseller: true,
   },
-  // Womens Collection
   {
-    id: 'womens-essential-hoodie',
+    id: 'youngmen-premium-tracksuit',
+    name: 'Premium Track Set',
+    price: 225,
+    category: 'tracksuit',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Grey', hex: '#6B6B6B', image: mensTracksuitGrey },
+      { name: 'Charcoal', hex: '#3A3A3A', image: youngmenTracksuitCharcoal },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [mensTracksuitGrey, youngmenTracksuitCharcoal],
+    description: 'Elevated tracksuit with premium fabric and refined details. Contemporary silhouette.',
+    isNew: true,
+  },
+
+  // Women Collection - Hoodies
+  {
+    id: 'women-essential-hoodie',
     name: 'Essential Hoodie',
     price: 120,
     category: 'hoodie',
-    collection: 'womens',
+    collection: 'women',
     colors: [
-      { name: 'Blush', hex: '#E8D5D5', image: womensHoodieCream },
+      { name: 'Blush', hex: '#E8D5D5', image: womensHoodieBlush },
       { name: 'Cream', hex: '#F5F0E8', image: womensHoodieCream },
       { name: 'Black', hex: '#1A1A1A', image: kidsHoodieBlack },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: [womensHoodieCream, kidsHoodieBlack],
-    description: 'Feminine fit Essential hoodie with soft brushed interior.',
+    images: [womensHoodieBlush, womensHoodieCream, kidsHoodieBlack],
+    description: 'Feminine fit Essential hoodie with soft brushed interior. Modern relaxed silhouette.',
     isNew: true,
   },
   {
-    id: 'womens-cropped-hoodie',
+    id: 'women-cropped-hoodie',
     name: 'Cropped Essential Hoodie',
     price: 115,
     category: 'hoodie',
-    collection: 'womens',
+    collection: 'women',
     colors: [
       { name: 'Cream', hex: '#F5F0E8', image: womensHoodieCream },
-      { name: 'Sage', hex: '#9CAF88', image: womensHoodieCream },
+      { name: 'Blush', hex: '#E8D5D5', image: womensHoodieBlush },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: [womensHoodieCream],
+    images: [womensHoodieCream, womensHoodieBlush],
     description: 'Cropped silhouette with relaxed fit and dropped shoulders.',
+    isBestseller: true,
+  },
+  {
+    id: 'women-oversized-hoodie',
+    name: 'Oversized Logo Hoodie',
+    price: 130,
+    category: 'hoodie',
+    collection: 'women',
+    colors: [
+      { name: 'Cream', hex: '#F5F0E8', image: womensHoodieCream },
+      { name: 'Blush', hex: '#E8D5D5', image: womensHoodieBlush },
+      { name: 'Black', hex: '#1A1A1A', image: kidsHoodieBlack },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [womensHoodieCream, womensHoodieBlush],
+    description: 'Oversized silhouette with signature Essential London branding.',
+  },
+  // Women Collection - Sweatshirts
+  {
+    id: 'women-crewneck',
+    name: 'Essential Crewneck',
+    price: 95,
+    category: 'sweatshirt',
+    collection: 'women',
+    colors: [
+      { name: 'Taupe', hex: '#B8A898', image: womensSweatshirtTaupe },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsSweatshirtCream },
+      { name: 'Blush', hex: '#E8D5D5', image: womensHoodieBlush },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [womensSweatshirtTaupe, kidsSweatshirtCream],
+    description: 'Minimalist crewneck sweatshirt with subtle chest logo. Soft brushed interior.',
+    isNew: true,
+  },
+  {
+    id: 'women-relaxed-sweat',
+    name: 'Relaxed Fit Sweatshirt',
+    price: 100,
+    category: 'sweatshirt',
+    collection: 'women',
+    colors: [
+      { name: 'Taupe', hex: '#B8A898', image: womensSweatshirtTaupe },
+      { name: 'Cream', hex: '#F5F0E8', image: kidsSweatshirtCream },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [womensSweatshirtTaupe, kidsSweatshirtCream],
+    description: 'Soft brushed fleece interior with relaxed contemporary fit.',
+  },
+  // Women Collection - Tracksuits
+  {
+    id: 'women-tracksuit',
+    name: 'Essential Tracksuit Set',
+    price: 185,
+    originalPrice: 220,
+    category: 'tracksuit',
+    collection: 'women',
+    colors: [
+      { name: 'Cream', hex: '#F5F0E8', image: womensTracksuitCream },
+      { name: 'Blush', hex: '#E8D5D5', image: womensHoodieBlush },
+      { name: 'Black', hex: '#1A1A1A', image: kidsTracksuitBlack },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [womensTracksuitCream, kidsTracksuitBlack],
+    description: 'Complete tracksuit set including cropped hoodie and matching joggers.',
+    isBestseller: true,
+  },
+  {
+    id: 'women-premium-tracksuit',
+    name: 'Premium Track Set',
+    price: 210,
+    category: 'tracksuit',
+    collection: 'women',
+    colors: [
+      { name: 'Cream', hex: '#F5F0E8', image: womensTracksuitCream },
+      { name: 'Taupe', hex: '#B8A898', image: womensSweatshirtTaupe },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [womensTracksuitCream],
+    description: 'Elevated tracksuit with premium fabric and refined details. Modern feminine fit.',
+    isNew: true,
   },
 ];
 

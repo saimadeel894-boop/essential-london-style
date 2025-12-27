@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils';
 const navigation = [
   { name: 'Shop All', href: '/shop' },
   { name: 'Kids', href: '/kids' },
+  { name: 'Young Men', href: '/young-men' },
+  { name: 'Women', href: '/women' },
   { name: 'New Arrivals', href: '/shop?filter=new' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
@@ -35,13 +37,13 @@ export const Header = () => {
           </button>
 
           {/* Desktop navigation */}
-          <div className="hidden lg:flex lg:gap-x-8">
+          <div className="hidden lg:flex lg:gap-x-6">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 className={cn(
-                  "nav-link link-underline py-2",
+                  "nav-link link-underline py-2 text-sm",
                   location.pathname === item.href && "text-foreground"
                 )}
               >
@@ -82,7 +84,7 @@ export const Header = () => {
         {/* Mobile menu */}
         <div className={cn(
           "lg:hidden overflow-hidden transition-all duration-300",
-          mobileMenuOpen ? "max-h-80 pb-6" : "max-h-0"
+          mobileMenuOpen ? "max-h-96 pb-6" : "max-h-0"
         )}>
           <div className="flex flex-col gap-4 pt-4">
             {navigation.map((item) => (

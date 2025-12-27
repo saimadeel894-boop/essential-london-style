@@ -8,6 +8,8 @@ import { Layout } from "@/components/layout/Layout";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import Kids from "./pages/Kids";
+import YoungMen from "./pages/YoungMen";
+import Women from "./pages/Women";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
@@ -28,6 +30,8 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/kids" element={<Kids />} />
+              <Route path="/young-men" element={<YoungMen />} />
+              <Route path="/women" element={<Women />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/about" element={<About />} />
