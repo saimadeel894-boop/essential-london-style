@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag, Search } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { cn } from '@/lib/utils';
+import { SearchDialog } from '@/components/search/SearchDialog';
 
 const navigation = [
   { name: 'Shop All', href: '/shop' },
@@ -16,6 +17,7 @@ const navigation = [
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { totalItems, setIsCartOpen } = useCart();
   const location = useLocation();
 
@@ -64,7 +66,10 @@ export const Header = () => {
 
           {/* Right side icons */}
           <div className="flex items-center gap-4">
-            <button className="p-2 hidden sm:block hover:opacity-70 transition-opacity">
+            <button 
+              className="p-2 hover:opacity-70 transition-opacity"
+              onClick={() => setSearchOpen(true)}
+            >
               <Search className="h-5 w-5" />
             </button>
             <button 
@@ -79,6 +84,9 @@ export const Header = () => {
               )}
             </button>
           </div>
+
+          {/* Search Dialog */}
+          <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
         </div>
 
         {/* Mobile menu */}
