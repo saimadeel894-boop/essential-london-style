@@ -32,9 +32,10 @@ export const CartDrawer = () => {
                   className="flex gap-4"
                 >
                   <div className="w-20 h-24 bg-secondary rounded-sm overflow-hidden flex-shrink-0">
-                    <div 
-                      className="w-full h-full"
-                      style={{ backgroundColor: item.selectedColor.hex }}
+                    <img 
+                      src={item.selectedColor.image || item.product.images[0]}
+                      alt={item.product.name}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="flex-1 flex flex-col">
