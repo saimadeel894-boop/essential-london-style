@@ -7,6 +7,8 @@ import { ChevronLeft, Minus, Plus, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
+const FALLBACK_IMAGE = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="533" viewBox="0 0 400 533"%3E%3Crect fill="%23E8E4DE" width="400" height="533"/%3E%3Ctext fill="%23999" font-family="Arial" font-size="14" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage%3C/text%3E%3C/svg%3E';
+
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const product = getProductById(id || '');
@@ -19,6 +21,7 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [imageError, setImageError] = useState<Record<number, boolean>>({});
 
   const relatedProducts = getFeaturedProducts().filter(p => p.id !== id).slice(0, 4);
 
@@ -58,6 +61,14 @@ const ProductDetail = () => {
     });
   };
 
+  // Get current main image based on selected color
+  const currentMainImage = selectedColor?.image || product.images[activeImageIndex] || product.images[0];
+
+  // Get all available images for gallery thumbnails
+  const galleryImages = product.colors
+    .filter(color => color.image)
+    .map(color => ({ image: color.image!, colorName: color.name, hex: color.hex }));
+
   return (
     <div className="min-h-screen">
       {/* Breadcrumb */}
@@ -73,30 +84,43 @@ const ProductDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div 
-              className="aspect-[3/4] bg-secondary overflow-hidden"
-              style={{ backgroundColor: selectedColor?.hex || product.colors[0]?.hex }}
-            >
-              {/* Placeholder for product image */}
+            <div className="aspect-[3/4] bg-secondary overflow-hidden">
+              <img
+                src={imageError[activeImageIndex] ? FALLBACK_IMAGE : currentMainImage}
+                alt={product.name}
+                className="w-full h-full object-cover"
+                onError={() => setImageError(prev => ({ ...prev, [activeImageIndex]: true }))}
+              />
             </div>
             
-            {/* Color swatches as thumbnail alternatives */}
-            <div className="flex gap-2">
-              {product.colors.map((color, index) => (
-                <button
-                  key={color.name}
-                  onClick={() => {
-                    setSelectedColor(color);
-                    setActiveImageIndex(index);
-                  }}
-                  className={cn(
-                    "w-16 h-20 border-2 transition-colors",
-                    activeImageIndex === index ? "border-foreground" : "border-transparent"
-                  )}
-                  style={{ backgroundColor: color.hex }}
-                />
-              ))}
-            </div>
+            {/* Thumbnail gallery */}
+            {galleryImages.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                {galleryImages.map((item, index) => (
+                  <button
+                    key={item.colorName}
+                    onClick={() => {
+                      const color = product.colors.find(c => c.name === item.colorName);
+                      if (color) {
+                        setSelectedColor(color);
+                        setActiveImageIndex(index);
+                      }
+                    }}
+                    className={cn(
+                      "relative w-20 h-24 flex-shrink-0 border-2 transition-colors overflow-hidden",
+                      selectedColor?.name === item.colorName ? "border-foreground" : "border-transparent"
+                    )}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.colorName}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
@@ -134,7 +158,11 @@ const ProductDetail = () => {
                 {product.colors.map((color) => (
                   <button
                     key={color.name}
-                    onClick={() => setSelectedColor(color)}
+                    onClick={() => {
+                      setSelectedColor(color);
+                      const colorIndex = galleryImages.findIndex(g => g.colorName === color.name);
+                      if (colorIndex >= 0) setActiveImageIndex(colorIndex);
+                    }}
                     className={cn(
                       "w-10 h-10 rounded-full border-2 relative transition-all",
                       selectedColor?.name === color.name 
