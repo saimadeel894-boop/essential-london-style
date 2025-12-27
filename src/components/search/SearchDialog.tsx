@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, X } from 'lucide-react';
+import { Search, X, ShoppingBag } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { products, Product } from '@/lib/products';
+import { useCart } from '@/contexts/CartContext';
+import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
 interface SearchDialogProps {
@@ -19,6 +21,8 @@ export const SearchDialog = ({ open, onOpenChange }: SearchDialogProps) => {
   const [selectedCollection, setSelectedCollection] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const navigate = useNavigate();
+  const { addItem } = useCart();
+  const { toast } = useToast();
 
   // Reset state when dialog closes
   useEffect(() => {
@@ -59,6 +63,15 @@ export const SearchDialog = ({ open, onOpenChange }: SearchDialogProps) => {
   const handleProductClick = (product: Product) => {
     onOpenChange(false);
     navigate(`/product/${product.id}`);
+  };
+
+  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+    e.stopPropagation();
+    addItem(product, product.colors[0], product.sizes[0]);
+    toast({
+      title: "Added to cart",
+      description: `${product.name} has been added to your cart.`,
+    });
   };
 
   const formatCollectionName = (collection: string) => {
@@ -161,15 +174,24 @@ export const SearchDialog = ({ open, onOpenChange }: SearchDialogProps) => {
                     </p>
                     <p className="text-sm font-medium mt-1">£{product.price.toFixed(2)}</p>
                   </div>
-                  <div className="flex gap-1">
-                    {product.colors.slice(0, 3).map((color) => (
-                      <div
-                        key={color.name}
-                        className="w-4 h-4 rounded-full border border-border"
-                        style={{ backgroundColor: color.hex }}
-                        title={color.name}
-                      />
-                    ))}
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1">
+                      {product.colors.slice(0, 3).map((color) => (
+                        <div
+                          key={color.name}
+                          className="w-4 h-4 rounded-full border border-border"
+                          style={{ backgroundColor: color.hex }}
+                          title={color.name}
+                        />
+                      ))}
+                    </div>
+                    <button
+                      onClick={(e) => handleAddToCart(e, product)}
+                      className="p-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                      title="Add to cart"
+                    >
+                      <ShoppingBag className="h-4 w-4" />
+                    </button>
                   </div>
                 </button>
               ))}
