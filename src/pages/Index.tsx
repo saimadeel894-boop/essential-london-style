@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-image.jpg';
 import kidsCollection from '@/assets/kids-collection.jpg';
+import youngmenCollection from '@/assets/youngmen-collection.jpg';
+import womenCollection from '@/assets/women-collection.jpg';
 import { ProductGrid } from '@/components/product/ProductGrid';
-import { getFeaturedProducts, getNewArrivals, getProductsByCollection } from '@/lib/products';
-import { ArrowRight } from 'lucide-react';
+import { getFeaturedProducts, getNewArrivals } from '@/lib/products';
+import { ArrowRight, Truck, Shield, Leaf } from 'lucide-react';
 
 const Index = () => {
   const featuredProducts = getFeaturedProducts();
   const newArrivals = getNewArrivals();
-  const kidsProducts = getProductsByCollection('kids').slice(0, 4);
 
   return (
     <div className="flex flex-col">
@@ -47,53 +48,94 @@ const Index = () => {
       {/* Brand Story Banner */}
       <section className="bg-primary text-primary-foreground py-4">
         <div className="container-luxury">
-          <p className="text-center text-sm tracking-widest uppercase">
-            Free Shipping on Orders Over £100 • Premium Quality • Sustainable Materials
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-center">
+            <div className="flex items-center gap-2">
+              <Truck className="h-4 w-4" />
+              <span className="text-xs tracking-wider uppercase">Free Shipping Over £100</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="h-4 w-4" />
+              <span className="text-xs tracking-wider uppercase">30-Day Returns</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Leaf className="h-4 w-4" />
+              <span className="text-xs tracking-wider uppercase">Sustainable Materials</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Grid */}
+      <section className="container-luxury py-20 lg:py-28">
+        <div className="text-center mb-12">
+          <span className="text-xs tracking-widest uppercase text-muted-foreground">Collections</span>
+          <h2 className="text-display text-3xl md:text-4xl font-light mt-2">Shop by Category</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Kids */}
+          <Link to="/kids" className="group relative aspect-[3/4] overflow-hidden">
+            <img 
+              src={kidsCollection} 
+              alt="Kids Collection" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/30 transition-colors" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-background">
+              <h3 className="text-display text-2xl md:text-3xl font-light mb-2">Kids</h3>
+              <span className="text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                Shop Now <ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
+          </Link>
+
+          {/* Young Men */}
+          <Link to="/young-men" className="group relative aspect-[3/4] overflow-hidden">
+            <img 
+              src={youngmenCollection} 
+              alt="Young Men Collection" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/30 transition-colors" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-background">
+              <h3 className="text-display text-2xl md:text-3xl font-light mb-2">Young Men</h3>
+              <span className="text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                Shop Now <ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
+          </Link>
+
+          {/* Women */}
+          <Link to="/women" className="group relative aspect-[3/4] overflow-hidden">
+            <img 
+              src={womenCollection} 
+              alt="Women Collection" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-foreground/20 group-hover:bg-foreground/30 transition-colors" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-background">
+              <h3 className="text-display text-2xl md:text-3xl font-light mb-2">Women</h3>
+              <span className="text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+                Shop Now <ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
+          </Link>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="container-luxury py-20 lg:py-28">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-          <div>
-            <span className="text-xs tracking-widest uppercase text-muted-foreground">Curated Selection</span>
-            <h2 className="text-display text-3xl md:text-4xl font-light mt-2">Featured Pieces</h2>
-          </div>
-          <Link to="/shop" className="nav-link link-underline flex items-center gap-2">
-            View All <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <ProductGrid products={featuredProducts} columns={4} />
-      </section>
-
-      {/* Kids Collection Banner */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src={kidsCollection} 
-            alt="Kids Collection" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-foreground/20" />
-        </div>
-        
-        <div className="relative z-10 container-luxury">
-          <div className="max-w-lg">
-            <span className="inline-block text-xs tracking-[0.3em] uppercase mb-4 text-background">
-              New Collection
-            </span>
-            <h2 className="text-display text-4xl md:text-5xl font-light text-background mb-6">
-              Kids Essentials
-            </h2>
-            <p className="text-background/80 mb-8">
-              Premium streetwear sized for the next generation. 
-              Crafted with the same quality and attention to detail.
-            </p>
-            <Link to="/kids" className="btn-luxury bg-background text-foreground hover:bg-background/90">
-              Shop Kids
+      <section className="bg-secondary py-20 lg:py-28">
+        <div className="container-luxury">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+            <div>
+              <span className="text-xs tracking-widest uppercase text-muted-foreground">Curated Selection</span>
+              <h2 className="text-display text-3xl md:text-4xl font-light mt-2">Featured Pieces</h2>
+            </div>
+            <Link to="/shop" className="nav-link link-underline flex items-center gap-2">
+              View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
+          <ProductGrid products={featuredProducts} columns={4} />
         </div>
       </section>
 
@@ -108,30 +150,30 @@ const Index = () => {
             View All <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <ProductGrid products={newArrivals} columns={4} />
+        <ProductGrid products={newArrivals.slice(0, 4)} columns={4} />
       </section>
 
       {/* Values Section */}
-      <section className="bg-secondary py-20 lg:py-28">
+      <section className="bg-primary text-primary-foreground py-20 lg:py-28">
         <div className="container-luxury">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div className="opacity-0 animate-fade-up">
+            <div>
               <h3 className="text-display text-xl font-medium mb-4">Premium Quality</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-primary-foreground/70 text-sm leading-relaxed">
                 Crafted from the finest materials, each piece is designed 
                 to stand the test of time.
               </p>
             </div>
-            <div className="opacity-0 animate-fade-up stagger-1">
+            <div>
               <h3 className="text-display text-xl font-medium mb-4">Timeless Design</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-primary-foreground/70 text-sm leading-relaxed">
                 Minimalist aesthetics that transcend seasons and trends, 
                 creating wardrobes that last.
               </p>
             </div>
-            <div className="opacity-0 animate-fade-up stagger-2">
+            <div>
               <h3 className="text-display text-xl font-medium mb-4">Sustainable Future</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-primary-foreground/70 text-sm leading-relaxed">
                 Committed to responsible production and materials 
                 that respect our planet.
               </p>
