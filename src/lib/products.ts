@@ -15,6 +15,11 @@ import youngmenTracksuitCharcoal from '@/assets/products/youngmen-tracksuit-char
 import womensHoodieBlush from '@/assets/products/womens-hoodie-blush.jpg';
 import womensSweatshirtTaupe from '@/assets/products/womens-sweatshirt-taupe.jpg';
 import womensTracksuitCream from '@/assets/products/womens-tracksuit-cream.jpg';
+// T-Shirt images
+import tshirtBlack from '@/assets/products/tshirt-black.jpg';
+import tshirtCream from '@/assets/products/tshirt-cream.jpg';
+import tshirtSage from '@/assets/products/tshirt-sage.jpg';
+import tshirtNavy from '@/assets/products/tshirt-navy.jpg';
 
 export interface Product {
   id: string;
@@ -388,6 +393,136 @@ export const products: Product[] = [
     images: [womensTracksuitCream],
     description: 'Elevated tracksuit with premium fabric and refined details. Modern feminine fit.',
     isNew: true,
+  },
+
+  // T-Shirts - Kids Collection
+  {
+    id: 'kids-essential-tee',
+    name: 'Essential Kids T-Shirt',
+    price: 45,
+    category: 't-shirt',
+    collection: 'kids',
+    colors: [
+      { name: 'Black', hex: '#1A1A1A', image: tshirtBlack },
+      { name: 'Cream', hex: '#F5F0E8', image: tshirtCream },
+      { name: 'Sage', hex: '#9CAF88', image: tshirtSage },
+    ],
+    sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
+    images: [tshirtBlack, tshirtCream, tshirtSage],
+    description: 'Premium cotton essential t-shirt with relaxed fit. Soft and comfortable for everyday wear.',
+    isNew: true,
+  },
+  {
+    id: 'kids-oversized-tee',
+    name: 'Oversized Logo Tee',
+    price: 55,
+    category: 't-shirt',
+    collection: 'kids',
+    colors: [
+      { name: 'Cream', hex: '#F5F0E8', image: tshirtCream },
+      { name: 'Black', hex: '#1A1A1A', image: tshirtBlack },
+    ],
+    sizes: ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'],
+    images: [tshirtCream, tshirtBlack],
+    description: 'Oversized silhouette with signature Essential London branding on chest.',
+    isBestseller: true,
+  },
+
+  // T-Shirts - Young Men Collection
+  {
+    id: 'youngmen-essential-tee',
+    name: 'Essential T-Shirt',
+    price: 65,
+    category: 't-shirt',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Black', hex: '#1A1A1A', image: tshirtBlack },
+      { name: 'Cream', hex: '#F5F0E8', image: tshirtCream },
+      { name: 'Navy', hex: '#1E2A3A', image: tshirtNavy },
+      { name: 'Sage', hex: '#9CAF88', image: tshirtSage },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [tshirtBlack, tshirtCream, tshirtNavy, tshirtSage],
+    description: 'Signature Essential London t-shirt with heavyweight premium cotton. Streetwear essential.',
+    isBestseller: true,
+  },
+  {
+    id: 'youngmen-oversized-tee',
+    name: 'Oversized Street Tee',
+    price: 75,
+    category: 't-shirt',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Navy', hex: '#1E2A3A', image: tshirtNavy },
+      { name: 'Black', hex: '#1A1A1A', image: tshirtBlack },
+      { name: 'Sage', hex: '#9CAF88', image: tshirtSage },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [tshirtNavy, tshirtBlack, tshirtSage],
+    description: 'Oversized fit with dropped shoulders. Premium cotton blend with subtle branding.',
+    isNew: true,
+  },
+  {
+    id: 'youngmen-boxy-tee',
+    name: 'Boxy Fit Tee',
+    price: 70,
+    category: 't-shirt',
+    collection: 'youngmen',
+    colors: [
+      { name: 'Cream', hex: '#F5F0E8', image: tshirtCream },
+      { name: 'Sage', hex: '#9CAF88', image: tshirtSage },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    images: [tshirtCream, tshirtSage],
+    description: 'Contemporary boxy silhouette with minimal branding. Elevated everyday essential.',
+  },
+
+  // T-Shirts - Women Collection
+  {
+    id: 'women-essential-tee',
+    name: 'Essential T-Shirt',
+    price: 60,
+    category: 't-shirt',
+    collection: 'women',
+    colors: [
+      { name: 'Cream', hex: '#F5F0E8', image: tshirtCream },
+      { name: 'Black', hex: '#1A1A1A', image: tshirtBlack },
+      { name: 'Sage', hex: '#9CAF88', image: tshirtSage },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [tshirtCream, tshirtBlack, tshirtSage],
+    description: 'Feminine fit Essential t-shirt with soft premium cotton. Modern relaxed silhouette.',
+    isNew: true,
+  },
+  {
+    id: 'women-cropped-tee',
+    name: 'Cropped Essential Tee',
+    price: 55,
+    category: 't-shirt',
+    collection: 'women',
+    colors: [
+      { name: 'Cream', hex: '#F5F0E8', image: tshirtCream },
+      { name: 'Black', hex: '#1A1A1A', image: tshirtBlack },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [tshirtCream, tshirtBlack],
+    description: 'Cropped silhouette with relaxed fit. Perfect for high-waisted styling.',
+    isBestseller: true,
+  },
+  {
+    id: 'women-oversized-tee',
+    name: 'Oversized Logo Tee',
+    price: 65,
+    category: 't-shirt',
+    collection: 'women',
+    colors: [
+      { name: 'Black', hex: '#1A1A1A', image: tshirtBlack },
+      { name: 'Cream', hex: '#F5F0E8', image: tshirtCream },
+      { name: 'Sage', hex: '#9CAF88', image: tshirtSage },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    images: [tshirtBlack, tshirtCream, tshirtSage],
+    description: 'Oversized silhouette with signature Essential London branding.',
   },
 ];
 
