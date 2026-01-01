@@ -9,6 +9,7 @@ const categories = [
   { value: 'hoodie', label: 'Hoodies' },
   { value: 'sweatshirt', label: 'Sweatshirts' },
   { value: 'tracksuit', label: 'Tracksuits' },
+  { value: 't-shirt', label: 'T-Shirts' },
 ];
 
 const sizes = ['4Y', '6Y', '8Y', '10Y', '12Y', '14Y'];

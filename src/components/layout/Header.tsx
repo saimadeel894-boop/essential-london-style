@@ -10,7 +10,7 @@ const navigation = [
   { name: 'Kids', href: '/kids' },
   { name: 'Young Men', href: '/young-men' },
   { name: 'Women', href: '/women' },
-  { name: 'New Arrivals', href: '/shop?filter=new' },
+  { name: 'T-Shirts', href: '/t-shirts' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
